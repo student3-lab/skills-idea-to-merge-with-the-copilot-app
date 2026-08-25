@@ -16,10 +16,10 @@ Project context Copilot should apply to every session in this repository.
 
 ## Persistence and hydration rules
 
-<!-- TODO (Step 2): add the two project rules this app depends on.
-     Replace this TODO with concrete guidance covering:
-       1. how bookmarks are persisted in the browser, and
-       2. where that browser-only code is allowed to run so the
-          static build never touches browser APIs. -->
-
-_TODO: complete the persistence and hydration rules above._
+- Bookmarks are persisted in the browser's `localStorage`. Do not introduce a
+  server-side or file-based persistence mechanism for this feature.
+- Any code that touches `localStorage` (or other browser-only APIs) must run
+  behind a `client:load` hydration boundary (an Astro island). Since the site
+  builds with static output, server-side rendering must never execute
+  browser-only code directly in `.astro` frontmatter or non-hydrated
+  components.
