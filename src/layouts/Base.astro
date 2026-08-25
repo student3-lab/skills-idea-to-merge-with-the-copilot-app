@@ -127,8 +127,14 @@ const { title = "Mona's Bookmark Manager App" } = Astro.props;
         padding: 0.75rem 0.9rem;
         border: 1px solid var(--border);
         border-radius: var(--radius);
+        transition: border-color 0.15s ease, box-shadow 0.15s ease;
       }
-      .bookmark .url { flex: 1 1 12rem; overflow-wrap: anywhere; }
+      li.bookmark:hover {
+        border-color: var(--accent);
+        box-shadow: 0 1px 8px color-mix(in srgb, var(--accent) 15%, transparent);
+      }
+      .bookmark .url { flex: 1 1 12rem; overflow-wrap: anywhere; color: inherit; }
+      .bookmark .sep { color: var(--muted); font-family: ui-monospace, "SF Mono", monospace; }
       .bookmark .slug {
         font-family: ui-monospace, "SF Mono", monospace;
         font-size: 0.85rem;
