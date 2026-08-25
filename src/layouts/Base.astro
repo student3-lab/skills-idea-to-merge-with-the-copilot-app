@@ -7,7 +7,13 @@ const { title = "Mona's Bookmark Manager App" } = Astro.props;
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <title>{title}</title>
-    <style>
+    <style is:global>
+      /* is:global — this layout's markup (<body><slot /></body>) only wraps
+         content authored in other files (index.astro, Bookmarks.astro).
+         Astro's default scoped CSS only tags elements literally written in
+         this file, so a scoped stylesheet here would never match the page
+         content that's actually being styled. Marking it global lets these
+         rules apply to the slotted markup as intended. */
       /* Monaspace webfonts (GitHub Next, SIL OFL 1.1) self-hosted from /public/fonts.
          Neon carries body text; Xenon gives headings a touch of contrast.
          Self-hosting keeps the app fully offline-capable — no runtime CDN needed;
